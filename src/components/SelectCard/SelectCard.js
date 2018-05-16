@@ -3,12 +3,9 @@ import "./SelectCard.css";
 
 const SelectCard = props => (
   <div className="card">
-    <div className="img-container">
+    <div className="img-container" onClick={() => props.clickCard(props.id)}>
       <img alt="Image of a cat" src={props.image} height="250px" />
     </div>
-    <div className="content"></div>
-    <span onClick={() => props.clickCard(props.id)} className="remove">
-    </span>
   </div>
 );
 

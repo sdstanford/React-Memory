@@ -1,20 +1,9 @@
 .navbar {
+  text-align: center;
   width: 100%;
-  background-color: navy;
-  color: white;
+  background-color: #ee99b2;
+  color: black;
   height: 100px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.gameName {
-  float: left;
-  padding-right: 290px;
-}
-
-.currentGuess {
-  float: left;
-  padding-right: 290px;
-}
-
-.totalScore {
-  float: right;
+  padding-left: 500px;
 }

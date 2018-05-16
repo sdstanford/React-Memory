@@ -7,24 +7,51 @@ import cards from "./cardInfo.json";
 import "./App.css";
 
 class App extends Component {
-  // Setting this.state.friends to the friends json array
+  // Setting this.state.cards to the friends json array
   state = {
-    cards
+    cards,
+    score: 0,
+    highScore: 0
   };
+
+  gameOver = () => {
+    if (this.state.score > this.state.highScore) {
+      this.setState({highScore: this.state.score}, function() {
+        console.log(this.state.highScore);
+      });
+    }
+    this.state.cards.forEach(card => {
+      card.count = 0;
+    });
+    alert(`Game Over :( \nscore: ${this.state.score}`);
+    this.setState({score: 0});
+    return true;
+  }
 
   clickCard = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const cards = this.state.cards.filter(card => card.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ cards });
-  };
+    this.state.cards.find((x, i) => {
+      if (x.id === id) {
+        if(cards[i].count === 0){
+          cards[i].count = cards[i].count + 1;
+          this.setState({score : this.state.score + 1}, function(){
+            console.log(this.state.score);
+          });
+          this.state.cards.sort(() => Math.random() - 0.5)
+          return true; 
+        } else {
+          this.gameOver();
+        }
+      }
+    });
+  }
 
-  // Map over this.state.friends and render a FriendCard component for each friend object
+  // Map over this.state.cards and render a Card component for each image
   render() {
     return (
       <Wrapper>
-        <ScoreBar />
+        {/* <ScoreBar /> */}
         <Title>Clicky Game!</Title>
+        <ScoreBar score={this.state.score} highScore={this.state.highScore} />
         {this.state.cards.map(card => (
           <SelectCard
             clickCard={this.clickCard}
@@ -33,6 +60,14 @@ class App extends Component {
             image={card.image}
           />
         ))}
+        {/* {this.state.cards.map(card => (
+          <SelectCard
+            clickCard={this.clickCard}
+            id={card.id}
+            key={card.id}
+            image={card.image}
+          />
+        ))} */}
       </Wrapper>
     );
   }
