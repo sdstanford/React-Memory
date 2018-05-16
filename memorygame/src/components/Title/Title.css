@@ -1,0 +1,18 @@
+.jumbotron {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    background-image: url(https://s3.amazonaws.com/spoonflower/public/design_thumbnails/0426/7355/rLittle_Smilemakers_-_Poes_04_shop_preview.png)
+  }
+
+.title {
+  font-size: 70px;
+  color: black;
+  text-shadow: 2px 2px white;
+}
+
+.subtitle {
+  font-size: 30px;
+  color: black;
+  text-shadow: 2px 2px white;
+}
